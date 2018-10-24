@@ -19,9 +19,17 @@ Your function will take an input string that may contain any of the symbols (), 
 It should return True if the string is empty or otherwise grouped correctly, or False if it is grouped incorrectly.
 """
 
+
 def group_check(s):
     pass
+
 
 def test_highest_and_lowest():
     assert group_check("()") is True
     assert group_check("({") is False
+    assert group_check("({})") is True
+    assert group_check("[[]()]") is True
+    assert group_check("[{()}]") is True
+    assert group_check("{(})") is False
+    assert group_check("([]") is False
+    assert group_check("[])") is False
