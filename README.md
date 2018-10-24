@@ -1,6 +1,6 @@
 # codewars
 
-'''bash
+```bash
 $ cd ~/work
 $ git clone https://github.com/IanJang/codewars.git
 $ cd codewars
