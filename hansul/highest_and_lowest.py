@@ -3,9 +3,9 @@ http://www.codewars.com/kata/highest-and-lowest/train/python
 In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
 """
 def high_and_low(numbers):
-    int_numbers = list(map(int, numbers.split(" ")))
-    high = sorted(int_numbers)[-1]
-    low = sorted(int_numbers)[0]
+    sorted_nums = sorted(map(int, numbers.split()))
+    high = sorted_nums[-1]
+    low = sorted_nums[0]
     return "{} {}".format(high, low)
 
 
