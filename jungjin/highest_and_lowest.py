@@ -4,7 +4,7 @@ In this little assignment you are given a string of space separated numbers, and
 """
 def high_and_low(numbers):
     convert_int_list = list(map(int, numbers.split(" ")))
-    numbers = "{} {}".format(max(a), min(a))
+    numbers = "{} {}".format(max(convert_int_list), min(convert_int_list))
     return numbers
 
 
