@@ -24,16 +24,40 @@ Columns may only contain integers: 1..N (N included)
 'Little squares' (3x3 in example above) may also only contain integers: 1..N (N included)
 Note: the matrix may include non-integer elements.
 '''
+import math
+
 from ian import Test
 
 
 class Sudoku(object):
     def __init__(self, data):
-        pass
+        self.data = data
+        self.column_length = len(self.data)
+        self.little_square_size = math.sqrt(self.column_length)
 
     def is_valid(self):
-        pass
+        if not self.has_valid_little_squares():
+            return False
 
+        for i in range(self.column_length):
+            row = self.data[i]
+            row_length = len(row)
+            if row_length != self.column_length:
+                return False
+
+        # check little squares
+
+        # check rows
+
+        # check columns
+
+        return True
+
+    def has_valid_little_squares(self):
+        if self.little_square_size % 1 == 0:
+            return True
+        else:
+            return False
 
 def test_validate_sudoku_with_size_nxn():
     # Valid Sudoku
