@@ -21,8 +21,64 @@ from ian import KataTest
 
 
 def isSolved(board):
-    # TODO: Check if the board is solved!
-    pass
+    ttt = TicTacToe(board)
+    return ttt.is_valid()
+
+
+class TicTacToe:
+    DRAW = 0
+    NOT_YET_FINISHED = -1
+    GAME_OVER_OFFSET = 13
+
+    def __init__(self, board):
+        self.board = board
+        self.board_size = len(board)
+        self.sum_of_elements = 0
+
+    @classmethod
+    def check_bingo(cls, row):
+        sum_of_row = sum(row)
+        num_of_difference_elements = len(set(row))
+        if sum_of_row == 0:
+            return False
+        if num_of_difference_elements == 1:
+            return True
+        return False
+
+    def is_valid(self):
+        # get target rows
+        target_rows = []
+        for i in range(self.board_size):
+            col = [row[i] for row in self.board]
+            target_rows.append(col)
+
+            row = self.board[i]
+            target_rows.append(row)
+
+            right_down_cross = [self.board[j][j] for j, _row in enumerate(self.board)]
+            left_down_cross = [self.board[-j][-j] for j, _row in enumerate(self.board)]
+            target_rows.append(right_down_cross)
+            target_rows.append(left_down_cross)
+
+            # for check game over
+            print(sum(row))
+            self.sum_of_elements += sum(row)
+
+        # check bingo from target rows
+        for row in target_rows:
+            if self.check_bingo(row):
+                return row[0]
+
+        if self.is_game_over:
+            return self.DRAW
+        else:
+            return self.NOT_YET_FINISHED
+
+    @property
+    def is_game_over(self):
+        if self.sum_of_elements < self.GAME_OVER_OFFSET:
+            return False
+        return True
 
 
 def test_tic_tac_toc():
@@ -50,3 +106,8 @@ def test_tic_tac_toc():
              [2, 1, 1],
              [1, 2, 1]]
     test.assert_equals(isSolved(board), 0)
+
+    board = [[1, 2, 0],
+             [2, 1, 0],
+             [0, 0, 1]]
+    test.assert_equals(isSolved(board), 1)
