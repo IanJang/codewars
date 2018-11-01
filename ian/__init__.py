@@ -8,6 +8,8 @@ class Test:
     def it(cls, text):
         print(text)
 
+    expect = assert_equals
+
 
 class KataTest(Test):
     pass
