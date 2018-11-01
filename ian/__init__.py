@@ -1,6 +1,6 @@
 class Test:
     @classmethod
-    def assert_equals(cls, a, b, text):
+    def assert_equals(cls, a, b, text=None):
         assert a == b
         print(text)
 
