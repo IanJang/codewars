@@ -7,3 +7,7 @@ class Test:
     @classmethod
     def it(cls, text):
         print(text)
+
+
+class KataTest(Test):
+    pass
