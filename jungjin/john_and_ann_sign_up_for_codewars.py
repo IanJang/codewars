@@ -1,5 +1,5 @@
 """
-[5Kyu]
+[5Kyu] https://www.codewars.com/kata/john-and-ann-sign-up-for-codewars/train/python
 ohn and his wife Ann have decided to go to Codewars.
 
 On first day Ann will do one kata and John - he wants to know how it is working - 0 kata.
