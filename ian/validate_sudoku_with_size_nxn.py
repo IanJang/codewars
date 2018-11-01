@@ -33,31 +33,66 @@ class Sudoku(object):
     def __init__(self, data):
         self.data = data
         self.column_length = len(self.data)
-        self.little_square_size = math.sqrt(self.column_length)
+        self.little_square_size = int(math.sqrt(self.column_length))
+        self.little_square_sum = int(self.column_length * (self.column_length + 1) / 2)
+        self.row_num_of_little_square = int(self.column_length / self.little_square_size)
 
     def is_valid(self):
-        if not self.has_valid_little_squares():
+        if not self.is_valid_structure():
             return False
 
+        # check row elements
+        for i in range(self.column_length):
+            row = self.data[i]
+            if not self.has_valid_elements(row):
+                return False
+
+        # check column elements
+        for i in range(self.column_length):
+            column = [row[i] for row in self.data]
+            if not self.has_valid_elements(column):
+                return False
+
+        # check little squares elements
+        for i in range(self.row_num_of_little_square):
+            sub_little_square_elements = []
+            sub_idx = i * self.little_square_size
+            for j in range(self.little_square_size):
+                sub_little_square_elements.extend(self.data[sub_idx+j][sub_idx:sub_idx+self.little_square_size])
+            if not self.has_valid_elements(sub_little_square_elements):
+                return False
+
+        return True
+
+    def is_valid_structure(self):
+        # little square structure
+        if self.little_square_size % 1 != 0:
+            return False
+
+        # Whole structure
         for i in range(self.column_length):
             row = self.data[i]
             row_length = len(row)
             if row_length != self.column_length:
                 return False
-
-        # check little squares
-
-        # check rows
-
-        # check columns
-
         return True
 
-    def has_valid_little_squares(self):
-        if self.little_square_size % 1 == 0:
-            return True
-        else:
-            return False
+    def has_valid_elements(self, elements):
+        try:
+            elements_sum = sum(elements)
+            # work-around code for data == [True]
+            if elements_sum == 1:
+                for element in elements:
+                    if type(element) is bool:
+                        return False
+            if elements_sum == self.little_square_sum:
+                if len(set(elements)) == len(elements):
+                    return True
+        except:
+            pass
+
+        return False
+
 
 def test_validate_sudoku_with_size_nxn():
     # Valid Sudoku
@@ -112,3 +147,25 @@ def test_validate_sudoku_with_size_nxn():
     Test.it('should be invalid')
     Test.assert_equals(badSudoku1.is_valid(), False, 'Values in wrong order')
     Test.assert_equals(badSudoku2.is_valid(), False, '4x5 (invalid dimension)')
+
+    badSudoku3 = Sudoku([
+        [1, 2, 1, 2],
+        [3, 4, 3, 4],
+        [1, 2, 1, 2],
+        [3, 4, 3, 4]
+    ])
+    Test.it('should be invalid')
+    Test.assert_equals(badSudoku3.is_valid(), False, 'Values in wrong order')
+
+    badSudoku4 = Sudoku([
+        [1, 2, 3, 4],
+        [3, 4, 1, 2],
+        [1, 2, 3, 4],
+        [3, 4, 1, 2]
+    ])
+    Test.it('should be invalid')
+    Test.assert_equals(badSudoku4.is_valid(), False, 'Values in wrong order')
+
+    badSudoku5 = Sudoku([[True]])
+    Test.it('should be invalid')
+    Test.assert_equals(badSudoku5.is_valid(), False, 'Values in wrong order')
