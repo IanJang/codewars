@@ -20,8 +20,51 @@ It should return True if the string is empty or otherwise grouped correctly, or 
 """
 
 
+# By.고운 대리님
+# c_set = {'(': ')', '[': ']', '{': '}', ')': '#', ']': '#', '}': '#'}
+# def group_check(s):
+#     l = []
+#     for c in list(s):
+#         if len(l) == 0:
+#             l.append(c)
+#         else:
+#             if c_set[l[-1]] == c:
+#                 l.pop(-1)
+#             else:
+#                 l.append(c)
+#
+#     if len(l) > 0:
+#         return False
+#     else:
+#         return True
+
+def next_string(v):
+    if v == "(":
+        return ")"
+    if v == "{":
+        return "}"
+    if v == "[":
+        return "]"
+
+
 def group_check(s):
-    pass
+    if len(s) == 0:
+        return True
+    if (s.count('(') + s.count(')')) % 2 == 1:
+        return False
+    if (s.count('{') + s.count('}')) % 2 == 1:
+        return False
+    if (s.count('[') + s.count(']')) % 2 == 1:
+        return False
+    if (len(s) % 2) == 1:
+        return False
+    for i in range(0, len(s)):
+        s = s.replace('()', "")
+        s = s.replace('{}', "")
+        s = s.replace('[]', "")
+        if len(s) == 0:
+            return True
+    return False
 
 
 def test_highest_and_lowest():
