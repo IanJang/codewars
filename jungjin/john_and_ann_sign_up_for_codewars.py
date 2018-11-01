@@ -47,17 +47,21 @@ def john(n):
     # your code
     pass
 
+
 def ann(n):
     # your code
     pass
+
 
 def sum_john(n):
     # your code
     pass
 
+
 def sum_ann(n):
     # your code
     pass
+
 
 def test_john_and_ann_sign_up_for_codewars():
     def John(n, res):
