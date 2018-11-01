@@ -21,8 +21,36 @@ from hansul import KataTest
 
 
 def isSolved(board):
-    # TODO: Check if the board is solved!
-    pass
+    check_list = [
+        [board[0][0], board[0][1], board[0][2]],  # 가로1
+        [board[1][0], board[1][1], board[1][2]],  # 가로1
+        [board[2][0], board[2][1], board[2][2]],  # 가로3
+
+        [board[0][0], board[1][0], board[2][0]],  # 세로1
+        [board[0][1], board[1][1], board[2][1]],  # 세로2
+        [board[0][2], board[1][2], board[2][2]],  # 세로3
+
+        [board[0][0], board[1][1], board[2][2]],  # 대각선1
+        [board[0][2], board[1][1], board[2][0]]   # 대각선2
+    ]
+
+    zero_mark = False
+    for check_array in check_list:
+        check_set = set(check_array)
+        if len(check_set) == 1:
+            if 0 in check_set:
+                zero_mark = True
+            elif 1 in check_set:
+                return 1
+            else:
+                return 2
+        elif 0 in check_set:
+            zero_mark = True
+
+    if zero_mark:
+        return -1
+    else:
+        return 0
 
 
 def test_tic_tac_toc():
@@ -50,3 +78,13 @@ def test_tic_tac_toc():
              [2, 1, 1],
              [1, 2, 1]]
     test.assert_equals(isSolved(board), 0)
+
+    board = [[2, 1, 1],
+             [0, 1, 1],
+             [2, 2, 2]]
+    test.assert_equals(isSolved(board), 2)
+
+    board = [[1, 2, 0],
+             [0, 1, 2],
+             [0, 0, 1]]
+    test.assert_equals(isSolved(board), 1)
