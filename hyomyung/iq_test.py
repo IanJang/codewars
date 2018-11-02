@@ -29,10 +29,10 @@ def iq_test(numbers):
     return number_list.index(result) + 1
 
 def test_iq_test():
-    assert iq_test("2 2 2 2 5")
-    assert iq_test("1 3 5 6 7 9")
-    assert iq_test("1 3 5 7 9 5 1 3 7 8 1 9 3 7")
-    assert iq_test("2 5 4 8 10 12 6 100")
+    assert iq_test("2 2 2 2 5") == 5
+    assert iq_test("1 3 5 6 7 9") == 4
+    assert iq_test("1 3 5 7 9 5 1 3 7 8 1 9 3 7") == 10
+    assert iq_test("2 5 4 8 10 12 6 100") == 2
 
 """
  - javascript 
