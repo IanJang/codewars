@@ -1,8 +1,8 @@
 # 4kyu
 # https://www.codewars.com/kata/546d15cebed2e10334000ed9/train/python
 import operator
-
 from hansul import KataTest
+
 
 def solve_runes(runes):
     class PlaceHolder:
@@ -10,6 +10,7 @@ def solve_runes(runes):
             self.value = None
 
     operater_map = {
+
         "-": operator.sub,
         "+": operator.add,
         "*": operator.mul,
@@ -55,15 +56,12 @@ def solve_runes(runes):
     #         result_value = computed_value
 
 
-
-
-
 def test_find_the_unknown_digit():
     test = KataTest()
-    test.assert_equals(solve_runes("1+1=?"), 2, "Answer for expression '1+1=?' ");
-    test.assert_equals(solve_runes("123*45?=5?088"), 6, "Answer for expression '123*45?=5?088' ");
-    test.assert_equals(solve_runes("-5?*-1=5?"), 0, "Answer for expression '-5?*-1=5?' ");
-    test.assert_equals(solve_runes("19--45=5?"), -1, "Answer for expression '19--45=5?' ");
-    test.assert_equals(solve_runes("??*??=302?"), 5, "Answer for expression '??*??=302?' ");
-    test.assert_equals(solve_runes("?*11=??"), 2, "Answer for expression '?*11=??' ");
-    test.assert_equals(solve_runes("??*1=??"), 2, "Answer for expression '?*11=??' ");
+    test.assert_equals(solve_runes("1+1=?"), 2, "Answer for expression '1+1=?' ")
+    test.assert_equals(solve_runes("123*45?=5?088"), 6, "Answer for expression '123*45?=5?088' ")
+    test.assert_equals(solve_runes("-5?*-1=5?"), 0, "Answer for expression '-5?*-1=5?' ")
+    test.assert_equals(solve_runes("19--45=5?"), -1, "Answer for expression '19--45=5?' ")
+    test.assert_equals(solve_runes("??*??=302?"), 5, "Answer for expression '??*??=302?' ")
+    test.assert_equals(solve_runes("?*11=??"), 2, "Answer for expression '?*11=??' ")
+    test.assert_equals(solve_runes("??*1=??"), 2, "Answer for expression '?*11=??' ")
