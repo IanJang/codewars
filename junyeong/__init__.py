@@ -10,6 +10,9 @@ class Test:
 
     expect = assert_equals
 
+    def describe(cls, text):
+        print(text)
+
 
 class KataTest(Test):
     pass
