@@ -10,6 +10,7 @@ class Test:
 
     expect = assert_equals
 
+    @classmethod
     def describe(cls, text):
         print(text)
 
