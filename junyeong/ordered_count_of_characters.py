@@ -1,7 +1,9 @@
 from junyeong import Test
 
+
 def ordered_count(input):
     result = {}
+
     for c in input:
         if c in result:
             result[c] += 1
