@@ -1,5 +1,6 @@
 from junyeong import Test
 
+
 def song_decoder(song):
     str = list(song.upper().replace("WUB", " ").lstrip().rstrip())
     for i, s in enumerate(str):
@@ -23,9 +24,9 @@ def song_decoder(song):
 
 
 def test_song_decoder():
-    Test.assert_equals(song_decoder("AWUBBWUBC"), "A B C","WUB should be replaced by 1 space")
-    Test.assert_equals(song_decoder("AWUBWUBWUBBWUBWUBWUBC"), "A B C","multiples WUB should be replaced by only 1 space")
-    Test.assert_equals(song_decoder("WUBAWUBBWUBCWUB"), "A B C","heading or trailing spaces should be removed")
+    Test.assert_equals(song_decoder("AWUBBWUBC"), "A B C", "WUB should be replaced by 1 space")
+    Test.assert_equals(song_decoder("AWUBWUBWUBBWUBWUBWUBC"), "A B C", "multiples WUB should be replaced by only 1 space")
+    Test.assert_equals(song_decoder("WUBAWUBBWUBCWUB"), "A B C", "heading or trailing spaces should be removed")
 
     Test.assert_equals(song_decoder("WUBWEWUBAREWUBWUBTHEWUBCHAMPIONSWUBMYWUBFRIENDWUB"), "WE ARE THE CHAMPIONS MY FRIEND")
     Test.assert_equals(song_decoder("WUBWUBPWUBYWUBWUBTWUBHWUBWUBWUBOWUBNWUBWUB"), "P Y T H O N")

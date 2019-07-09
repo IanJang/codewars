@@ -1,7 +1,9 @@
 from junyeong import Test
 
+
 def create_phone_number(n):
     return "({}{}{}) {}{}{}-{}{}{}{}".format(*n)
+
 
 def test_create_phone_number():
     Test.describe("Basic tests")
