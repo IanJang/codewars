@@ -7,7 +7,7 @@ def mix(s1, s2):
     for c in string.ascii_lowercase:
         cnt1 = s1.count(c)
         cnt2 = s2.count(c)
-        if not (cnt1 is 0 and cnt2 is 0):
+        if not (cnt1 == 0 and cnt2 == 0):
             sub = abs(cnt1 - cnt2)
             max_one = max(cnt1, cnt2)
             which_max = 1 if max_one == cnt1 else 2
@@ -15,7 +15,7 @@ def mix(s1, s2):
                 cnt[c] = (max_one, sub, which_max)
     ret = []
     for c in cnt:
-        head = '=' if cnt[c][1] is 0 else str(cnt[c][2])
+        head = '=' if cnt[c][1] == 0 else str(cnt[c][2])
         ret.append(head + ":" + c * cnt[c][0])
 
     dic = {dpo(s): s for s in ret}
@@ -81,10 +81,10 @@ def test_mix():
 if __name__ == '__main__':
     Test1.assert_equals(mix("Are they here", "yes, they are here"), "2:eeeee/2:yy/=:hh/=:rr")
     Test1.assert_equals(mix("looping is fun but dangerous", "less dangerous than coding"),
-                       "1:ooo/1:uuu/2:sss/=:nnn/1:ii/2:aa/2:dd/2:ee/=:gg")
-    Test1.assert_equals(mix(" In many languages", " there's a pair of functions"),
-                       "1:aaa/1:nnn/1:gg/2:ee/2:ff/2:ii/2:oo/2:rr/2:ss/2:tt")
+                        "1:ooo/1:uuu/2:sss/=:nnn/1:ii/2:aa/2:dd/2:ee/=:gg")
+    Test1.assert_equals(
+        mix(" In many languages", " there's a pair of functions"), "1:aaa/1:nnn/1:gg/2:ee/2:ff/2:ii/2:oo/2:rr/2:ss/2:tt")
     Test1.assert_equals(mix("Lords of the Fallen", "gamekult"), "1:ee/1:ll/1:oo")
     Test1.assert_equals(mix("codewars", "codewars"), "")
-    Test1.assert_equals(mix("A generation must confront the looming ", "codewarrs"),
-                       "1:nnnnn/1:ooooo/1:tttt/1:eee/1:gg/1:ii/1:mm/=:rr")
+    Test1.assert_equals(
+        mix("A generation must confront the looming ", "codewarrs"), "1:nnnnn/1:ooooo/1:tttt/1:eee/1:gg/1:ii/1:mm/=:rr")

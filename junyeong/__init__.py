@@ -18,6 +18,7 @@ class Test:
 class KataTest(Test):
     pass
 
+
 class Test1:
     @classmethod
     def assert_equals(cls, a, b, text=None):

@@ -1,11 +1,13 @@
 from junyeong import Test
 
+
 def make_readable(seconds):
     sec = seconds % 60
     minute = seconds // 60 % 60
     hour = seconds // 60 // 60
     ret = "{:02d}:{:02d}:{:02d}".format(hour, minute, sec)
     return ret
+
 
 def test_make_readable():
     Test.assert_equals(make_readable(0), "00:00:00")

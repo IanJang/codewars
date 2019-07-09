@@ -11,6 +11,7 @@ def ordered_count(input):
             result[c] = 1
     return list(result.items())
 
+
 def test_ordered_count():
     test = Test()
     test.describe("Basic Tests")

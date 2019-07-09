@@ -1,10 +1,12 @@
 from junyeong import Test
 import re
 
+
 def order(sentence):
     strs = sentence.split()
     li = list(dict(sorted({s: int(re.findall("\\d+", s)[0]) for s in strs}.items(), key=lambda kv: kv[1])).keys())
     return ' '.join(li)
+
 
 def test_order():
     Test.assert_equals(order("is2 Thi1s T4est 3a"), "Thi1s is2 3a T4est")
