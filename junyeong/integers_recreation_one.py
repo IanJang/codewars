@@ -80,4 +80,3 @@ def optimized_sum_square(n):
 
 if __name__ == '__main__':
     print(op_optimized_sum_square(1))
-
